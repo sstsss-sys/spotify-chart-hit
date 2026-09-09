@@ -1,0 +1,766 @@
+name: Update Jimin Charts (single trigger)
+
+# PUBLIC repo: this workflow + the resulting JSON data only.
+# PRIVATE repo (checked out below as "engine/" via a token): all the
+# actual scraping/merge logic, INCLUDING the 13 committed Spotify session
+# files (auth-song-americas.json etc) - see SETUP.md. Same public/private
+# split as the Shazam tracker; the session files live in the private repo
+# instead of as secrets so they're easy to swap without touching GitHub's
+# Secrets UI, at the cost of anyone with access to that private repo (or
+# a future accidental visibility change) being able to see them - a
+# deliberate tradeoff, not an oversight.
+#
+# Rate-limit design: every (chart type x continent) combination - song,
+# album and artist, each across americas/europe/asia/mea - uses its OWN
+# Spotify account (12 accounts), PLUS a 13th, fully separate account just
+# for "global" so it never shares anything with the other 12. All 13
+# scraping jobs run fully in parallel.
+#
+# No shared "final" job. song/album/artist/global each publish straight
+# to final.json the moment THEIR OWN data is ready - none of them wait on
+# each other. Each one updates only its own top-level key in final.json
+# (see update-final.js) and leaves the other 3 exactly as they were, so
+# there's no "everything waits for the slowest chart type" delay, and no
+# way for one section's update to corrupt another's rank/stream-change
+# numbers - each section's math only ever depends on its own history.
+#
+# Race safety: since song/album/artist/global CAN finish and try to push
+# at close to the same time, each one commits+pushes in a retry loop (see
+# the "Publish ..." step in every terminal job below). On a rejected push
+# (someone else published in between), only final.json gets re-synced
+# from the latest commit before retrying - never that job's own files -
+# so a retry can never lose or overwrite this run's own freshly scraped
+# data, only redo the final.json merge against the newest version.
+#
+# Manual trigger only - no schedule. Run it from the Actions tab whenever
+# you want a fresh chart.
+
+on:
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: jimin-chart-pipeline
+  cancel-in-progress: false
+
+jobs:
+  regional-americas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: sstsss-sys/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-song-americas.json auth.json
+      - name: Run regional-americas.js
+        run: node engine/regional-americas.js
+      - name: Save output (regional-americas-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: regional-americas-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  regional-europe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-song-europe.json auth.json
+      - name: Run regional-europe.js
+        run: node engine/regional-europe.js
+      - name: Save output (regional-europe-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: regional-europe-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  regional-asia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-song-asia.json auth.json
+      - name: Run regional-asia.js
+        run: node engine/regional-asia.js
+      - name: Save output (regional-asia-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: regional-asia-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  regional-mea:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-song-mea.json auth.json
+      - name: Run regional-mea.js
+        run: node engine/regional-mea.js
+      - name: Save output (regional-mea-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: regional-mea-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  album-americas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-album-americas.json auth.json
+      - name: Run album-americas.js
+        run: node engine/album-americas.js
+      - name: Save output (album-americas-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: album-americas-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  album-europe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-album-europe.json auth.json
+      - name: Run album-europe.js
+        run: node engine/album-europe.js
+      - name: Save output (album-europe-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: album-europe-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  album-asia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-album-asia.json auth.json
+      - name: Run album-asia.js
+        run: node engine/album-asia.js
+      - name: Save output (album-asia-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: album-asia-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  album-mea:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-album-mea.json auth.json
+      - name: Run album-mea.js
+        run: node engine/album-mea.js
+      - name: Save output (album-mea-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: album-mea-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  artist-americas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-artist-americas.json auth.json
+      - name: Run artist-americas.js
+        run: node engine/artist-americas.js
+      - name: Save output (artist-americas-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: artist-americas-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  artist-europe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-artist-europe.json auth.json
+      - name: Run artist-europe.js
+        run: node engine/artist-europe.js
+      - name: Save output (artist-europe-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: artist-europe-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  artist-asia:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-artist-asia.json auth.json
+      - name: Run artist-asia.js
+        run: node engine/artist-asia.js
+      - name: Save output (artist-asia-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: artist-asia-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  artist-mea:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-artist-mea.json auth.json
+      - name: Run artist-mea.js
+        run: node engine/artist-mea.js
+      - name: Save output (artist-mea-out)
+        uses: actions/upload-artifact@v4
+        with:
+          name: artist-mea-out
+          overwrite: true
+          path: |
+            *.json
+            data/**
+
+  regional-merge:
+    needs: [regional-americas, regional-europe, regional-asia, regional-mea]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Download regional-americas-out
+        uses: actions/download-artifact@v4
+        with:
+          name: regional-americas-out
+          path: .
+      - name: Download regional-europe-out
+        uses: actions/download-artifact@v4
+        with:
+          name: regional-europe-out
+          path: .
+      - name: Download regional-asia-out
+        uses: actions/download-artifact@v4
+        with:
+          name: regional-asia-out
+          path: .
+      - name: Download regional-mea-out
+        uses: actions/download-artifact@v4
+        with:
+          name: regional-mea-out
+          path: .
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run merge-regional.js
+        run: node engine/merge-regional.js
+      - name: Publish song chart (updates final.json's 'song' section on its own)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          attempt=0
+          while true; do
+            attempt=$((attempt+1))
+
+            node engine/prepare-song.js
+            node engine/update-final.js song
+
+            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit."
+              break
+            fi
+
+            git commit -m "chore: update song chart"
+
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              break
+            fi
+
+            echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
+            git reset --soft HEAD~1
+            git fetch origin main
+            git reset --mixed origin/main
+            git checkout HEAD -- final.json 2>/dev/null || true
+            sleep 3
+
+            if [ "$attempt" -ge 10 ]; then
+              echo "Giving up after 10 attempts."
+              exit 1
+            fi
+          done
+
+  album-merge:
+    needs: [album-americas, album-europe, album-asia, album-mea]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Download album-americas-out
+        uses: actions/download-artifact@v4
+        with:
+          name: album-americas-out
+          path: .
+      - name: Download album-europe-out
+        uses: actions/download-artifact@v4
+        with:
+          name: album-europe-out
+          path: .
+      - name: Download album-asia-out
+        uses: actions/download-artifact@v4
+        with:
+          name: album-asia-out
+          path: .
+      - name: Download album-mea-out
+        uses: actions/download-artifact@v4
+        with:
+          name: album-mea-out
+          path: .
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run merge-album.js
+        run: node engine/merge-album.js
+      - name: Publish album chart (updates final.json's 'album' section on its own)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          attempt=0
+          while true; do
+            attempt=$((attempt+1))
+
+            node engine/prepare-album.js
+            node engine/update-final.js album
+
+            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit."
+              break
+            fi
+
+            git commit -m "chore: update album chart"
+
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              break
+            fi
+
+            echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
+            git reset --soft HEAD~1
+            git fetch origin main
+            git reset --mixed origin/main
+            git checkout HEAD -- final.json 2>/dev/null || true
+            sleep 3
+
+            if [ "$attempt" -ge 10 ]; then
+              echo "Giving up after 10 attempts."
+              exit 1
+            fi
+          done
+
+  artist-merge:
+    needs: [artist-americas, artist-europe, artist-asia, artist-mea]
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Download artist-americas-out
+        uses: actions/download-artifact@v4
+        with:
+          name: artist-americas-out
+          path: .
+      - name: Download artist-europe-out
+        uses: actions/download-artifact@v4
+        with:
+          name: artist-europe-out
+          path: .
+      - name: Download artist-asia-out
+        uses: actions/download-artifact@v4
+        with:
+          name: artist-asia-out
+          path: .
+      - name: Download artist-mea-out
+        uses: actions/download-artifact@v4
+        with:
+          name: artist-mea-out
+          path: .
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run merge-artist.js
+        run: node engine/merge-artist.js
+      - name: Publish artist chart (updates final.json's 'artist' section on its own)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          attempt=0
+          while true; do
+            attempt=$((attempt+1))
+
+            node engine/prepare-artist.js
+            node engine/update-final.js artist
+
+            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit."
+              break
+            fi
+
+            git commit -m "chore: update artist chart"
+
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              break
+            fi
+
+            echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
+            git reset --soft HEAD~1
+            git fetch origin main
+            git reset --mixed origin/main
+            git checkout HEAD -- final.json 2>/dev/null || true
+            sleep 3
+
+            if [ "$attempt" -ge 10 ]; then
+              echo "Giving up after 10 attempts."
+              exit 1
+            fi
+          done
+
+  global:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout this repo (workflow + data)
+        uses: actions/checkout@v4
+      - name: Checkout private engine repo
+        uses: actions/checkout@v4
+        with:
+          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          token: ${{ secrets.ENGINE_REPO_TOKEN }}
+          path: engine
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install engine dependencies
+        working-directory: engine
+        run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
+      - name: Use committed Spotify session
+        run: cp engine/auth-global.json auth.json
+      - name: Run global.js
+        run: node engine/global.js
+      - name: Publish global chart (updates final.json's 'global' section on its own)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          attempt=0
+          while true; do
+            attempt=$((attempt+1))
+
+            node engine/prepare-global.js
+            node engine/update-final.js global
+
+            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            if git diff --cached --quiet; then
+              echo "No changes to commit."
+              break
+            fi
+
+            git commit -m "chore: update global chart"
+
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              break
+            fi
+
+            echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
+            git reset --soft HEAD~1
+            git fetch origin main
+            git reset --mixed origin/main
+            git checkout HEAD -- final.json 2>/dev/null || true
+            sleep 3
+
+            if [ "$attempt" -ge 10 ]; then
+              echo "Giving up after 10 attempts."
+              exit 1
+            fi
+          done
