@@ -1,0 +1,34 @@
+[
+  {
+    "country": "CL",
+    "type": "weekly",
+    "rank": 10,
+    "previousRank": 10,
+    "peakRank": 5,
+    "appearances": 111,
+    "album": "MUSE",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
+  },
+  {
+    "country": "VE",
+    "type": "weekly",
+    "rank": 19,
+    "previousRank": 20,
+    "peakRank": 1,
+    "appearances": 108,
+    "album": "MUSE",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 1,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
+  }
+]
