@@ -90,7 +90,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -125,7 +125,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -160,7 +160,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -195,7 +195,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -230,7 +230,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -265,7 +265,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -300,7 +300,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -335,7 +335,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -370,7 +370,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -405,7 +405,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -440,7 +440,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
@@ -476,7 +476,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Download regional-americas-out
@@ -554,7 +554,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Download album-americas-out
@@ -632,7 +632,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Download artist-americas-out
@@ -709,7 +709,7 @@ jobs:
       - name: Checkout private engine repo
         uses: actions/checkout@v4
         with:
-          repository: YOUR-GITHUB-USERNAME/spotify-chart-engine
+          repository: sstsss-sys/spotify-chart-engine
           token: ${{ secrets.ENGINE_REPO_TOKEN }}
           path: engine
       - name: Setup Node.js
