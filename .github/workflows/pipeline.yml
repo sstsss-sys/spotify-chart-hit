@@ -1,5 +1,40 @@
 name: Update Jimin Charts (single trigger)
 
+# PUBLIC repo: this workflow + the resulting JSON data only.
+# PRIVATE repo (checked out below as "engine/" via a token): all the
+# actual scraping/merge logic, INCLUDING the 13 committed Spotify session
+# files (auth-song-americas.json etc) - see SETUP.md. Same public/private
+# split as the Shazam tracker; the session files live in the private repo
+# instead of as secrets so they're easy to swap without touching GitHub's
+# Secrets UI, at the cost of anyone with access to that private repo (or
+# a future accidental visibility change) being able to see them - a
+# deliberate tradeoff, not an oversight.
+#
+# Rate-limit design: every (chart type x continent) combination - song,
+# album and artist, each across americas/europe/asia/mea - uses its OWN
+# Spotify account (12 accounts), PLUS a 13th, fully separate account just
+# for "global" so it never shares anything with the other 12. All 13
+# scraping jobs run fully in parallel.
+#
+# No shared "final" job. song/album/artist/global each publish straight
+# to final.json the moment THEIR OWN data is ready - none of them wait on
+# each other. Each one updates only its own top-level key in final.json
+# (see update-final.js) and leaves the other 3 exactly as they were, so
+# there's no "everything waits for the slowest chart type" delay, and no
+# way for one section's update to corrupt another's rank/stream-change
+# numbers - each section's math only ever depends on its own history.
+#
+# Race safety: since song/album/artist/global CAN finish and try to push
+# at close to the same time, each one commits+pushes in a retry loop (see
+# the "Publish ..." step in every terminal job below). On a rejected push
+# (someone else published in between), only final.json gets re-synced
+# from the latest commit before retrying - never that job's own files -
+# so a retry can never lose or overwrite this run's own freshly scraped
+# data, only redo the final.json merge against the newest version.
+#
+# Manual trigger only - no schedule. Run it from the Actions tab whenever
+# you want a fresh chart.
+
 on:
   workflow_dispatch: {}
 
@@ -43,8 +78,8 @@ jobs:
           name: regional-americas-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            regional-americas.json
+            chart-dates-americas.json
 
   regional-europe:
     runs-on: ubuntu-latest
@@ -78,8 +113,8 @@ jobs:
           name: regional-europe-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            regional-europe.json
+            chart-dates-europe.json
 
   regional-asia:
     runs-on: ubuntu-latest
@@ -113,8 +148,8 @@ jobs:
           name: regional-asia-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            regional-asia.json
+            chart-dates-asia.json
 
   regional-mea:
     runs-on: ubuntu-latest
@@ -148,8 +183,8 @@ jobs:
           name: regional-mea-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            regional-mea.json
+            chart-dates-mea.json
 
   album-americas:
     runs-on: ubuntu-latest
@@ -183,8 +218,8 @@ jobs:
           name: album-americas-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            album-americas.json
+            chart-album-americas.json
 
   album-europe:
     runs-on: ubuntu-latest
@@ -218,8 +253,8 @@ jobs:
           name: album-europe-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            album-europe.json
+            chart-album-europe.json
 
   album-asia:
     runs-on: ubuntu-latest
@@ -253,8 +288,8 @@ jobs:
           name: album-asia-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            album-asia.json
+            chart-album-asia.json
 
   album-mea:
     runs-on: ubuntu-latest
@@ -288,8 +323,8 @@ jobs:
           name: album-mea-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            album-mea.json
+            chart-album-mea.json
 
   artist-americas:
     runs-on: ubuntu-latest
@@ -323,8 +358,8 @@ jobs:
           name: artist-americas-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            artist-americas.json
+            chart-artist-americas.json
 
   artist-europe:
     runs-on: ubuntu-latest
@@ -358,8 +393,8 @@ jobs:
           name: artist-europe-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            artist-europe.json
+            chart-artist-europe.json
 
   artist-asia:
     runs-on: ubuntu-latest
@@ -393,8 +428,8 @@ jobs:
           name: artist-asia-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            artist-asia.json
+            chart-artist-asia.json
 
   artist-mea:
     runs-on: ubuntu-latest
@@ -428,8 +463,8 @@ jobs:
           name: artist-mea-out
           overwrite: true
           path: |
-            *.json
-            data/**
+            artist-mea.json
+            chart-artist-mea.json
 
   regional-merge:
     needs: [regional-americas, regional-europe, regional-asia, regional-mea]
