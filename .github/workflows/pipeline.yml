@@ -16,12 +16,14 @@ jobs:
     # baked in, so we skip "npx playwright install --with-deps chromium"
     # entirely below - that's what was re-downloading 21MB of fonts (plus
     # the Chromium binary itself) on every single job, every run.
-    # IMPORTANT: the version tag (v1.58.2 here) must match the "playwright"
-    # version in engine/package.json exactly, or the browser Playwright
-    # looks for won't match what's in the image. Check your package.json
-    # and swap the tag if it's different.
+    # IMPORTANT: the version tag (v1.52.0 here) must match the "playwright"
+    # version actually resolved in engine/package-lock.json exactly (not
+    # just the ^range in package.json), or the browser Playwright looks
+    # for won't match what's in the image. If you ever bump the version
+    # in package.json + regenerate the lockfile, update this tag (on
+    # every job below) to match.
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -60,7 +62,7 @@ jobs:
   regional-europe:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -99,7 +101,7 @@ jobs:
   regional-asia:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -138,7 +140,7 @@ jobs:
   regional-mea:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -177,7 +179,7 @@ jobs:
   album-americas:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -216,7 +218,7 @@ jobs:
   album-europe:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -255,7 +257,7 @@ jobs:
   album-asia:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -294,7 +296,7 @@ jobs:
   album-mea:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -333,7 +335,7 @@ jobs:
   artist-americas:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -372,7 +374,7 @@ jobs:
   artist-europe:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -411,7 +413,7 @@ jobs:
   artist-asia:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -450,7 +452,7 @@ jobs:
   artist-mea:
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -731,7 +733,7 @@ jobs:
     # faster (this container swap) shrinks that queue time for everyone,
     # global included, since runner slots free up sooner.
     container:
-      image: mcr.microsoft.com/playwright:v1.58.2-noble
+      image: mcr.microsoft.com/playwright:v1.52.0-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
