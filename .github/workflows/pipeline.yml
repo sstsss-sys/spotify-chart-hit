@@ -38,6 +38,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-song-americas.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run regional-americas.js
         run: node engine/regional-americas.js
       - name: Save output (regional-americas-out)
@@ -77,6 +79,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-song-europe.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run regional-europe.js
         run: node engine/regional-europe.js
       - name: Save output (regional-europe-out)
@@ -116,6 +120,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-song-asia.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run regional-asia.js
         run: node engine/regional-asia.js
       - name: Save output (regional-asia-out)
@@ -155,6 +161,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-song-mea.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run regional-mea.js
         run: node engine/regional-mea.js
       - name: Save output (regional-mea-out)
@@ -194,6 +202,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-album-americas.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run album-americas.js
         run: node engine/album-americas.js
       - name: Save output (album-americas-out)
@@ -233,6 +243,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-album-europe.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run album-europe.js
         run: node engine/album-europe.js
       - name: Save output (album-europe-out)
@@ -272,6 +284,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-album-asia.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run album-asia.js
         run: node engine/album-asia.js
       - name: Save output (album-asia-out)
@@ -311,6 +325,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-album-mea.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run album-mea.js
         run: node engine/album-mea.js
       - name: Save output (album-mea-out)
@@ -350,6 +366,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-artist-americas.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run artist-americas.js
         run: node engine/artist-americas.js
       - name: Save output (artist-americas-out)
@@ -389,6 +407,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-artist-europe.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run artist-europe.js
         run: node engine/artist-europe.js
       - name: Save output (artist-europe-out)
@@ -428,6 +448,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-artist-asia.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run artist-asia.js
         run: node engine/artist-asia.js
       - name: Save output (artist-asia-out)
@@ -467,6 +489,8 @@ jobs:
         run: npm install
       - name: Use committed Spotify session
         run: cp engine/auth-artist-mea.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run artist-mea.js
         run: node engine/artist-mea.js
       - name: Save output (artist-mea-out)
@@ -766,6 +790,8 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-global.json auth.json
+      - name: Wait 3s before scraping (saves date + chart per region)
+        run: sleep 3
       - name: Run global.js
         run: node engine/global.js
       - name: Publish global chart (updates final.json's 'global' section on its own)
