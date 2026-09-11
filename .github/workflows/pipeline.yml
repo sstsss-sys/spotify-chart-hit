@@ -12,6 +12,16 @@ concurrency:
 jobs:
   regional-americas:
     runs-on: ubuntu-latest
+    # Prebuilt image already has Chromium + every OS dep (fonts included)
+    # baked in, so we skip "npx playwright install --with-deps chromium"
+    # entirely below - that's what was re-downloading 21MB of fonts (plus
+    # the Chromium binary itself) on every single job, every run.
+    # IMPORTANT: the version tag (v1.58.2 here) must match the "playwright"
+    # version in engine/package.json exactly, or the browser Playwright
+    # looks for won't match what's in the image. Check your package.json
+    # and swap the tag if it's different.
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -26,12 +36,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-song-americas.json auth.json
       - name: Run regional-americas.js
@@ -47,6 +56,8 @@ jobs:
 
   regional-europe:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -61,12 +72,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-song-europe.json auth.json
       - name: Run regional-europe.js
@@ -82,6 +92,8 @@ jobs:
 
   regional-asia:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -96,12 +108,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-song-asia.json auth.json
       - name: Run regional-asia.js
@@ -117,6 +128,8 @@ jobs:
 
   regional-mea:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -131,12 +144,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-song-mea.json auth.json
       - name: Run regional-mea.js
@@ -152,6 +164,8 @@ jobs:
 
   album-americas:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -166,12 +180,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-album-americas.json auth.json
       - name: Run album-americas.js
@@ -187,6 +200,8 @@ jobs:
 
   album-europe:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -201,12 +216,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-album-europe.json auth.json
       - name: Run album-europe.js
@@ -222,6 +236,8 @@ jobs:
 
   album-asia:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -236,12 +252,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-album-asia.json auth.json
       - name: Run album-asia.js
@@ -257,6 +272,8 @@ jobs:
 
   album-mea:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -271,12 +288,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-album-mea.json auth.json
       - name: Run album-mea.js
@@ -292,6 +308,8 @@ jobs:
 
   artist-americas:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -306,12 +324,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-artist-americas.json auth.json
       - name: Run artist-americas.js
@@ -327,6 +344,8 @@ jobs:
 
   artist-europe:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -341,12 +360,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-artist-europe.json auth.json
       - name: Run artist-europe.js
@@ -362,6 +380,8 @@ jobs:
 
   artist-asia:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -376,12 +396,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-artist-asia.json auth.json
       - name: Run artist-asia.js
@@ -397,6 +416,8 @@ jobs:
 
   artist-mea:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -411,12 +432,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-artist-mea.json auth.json
       - name: Run artist-mea.js
@@ -666,6 +686,16 @@ jobs:
 
   global:
     runs-on: ubuntu-latest
+    # This job used to be the LAST one defined in the file with no "needs"
+    # of its own, so when all 13 independent jobs (4 regional + 4 album +
+    # 4 artist + this one) fire at once on trigger and your account's
+    # concurrent-job limit is smaller than 13, "global" is typically the
+    # one left waiting longest in the queue - that's very likely the real
+    # reason it "mentok telat" compared to the others. Making every job
+    # faster (this container swap) shrinks that queue time for everyone,
+    # global included, since runner slots free up sooner.
+    container:
+      image: mcr.microsoft.com/playwright:v1.58.2-noble
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -680,12 +710,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: npm
+          cache-dependency-path: engine/package-lock.json
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-global.json auth.json
       - name: Run global.js
