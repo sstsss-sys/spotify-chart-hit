@@ -12,22 +12,12 @@ concurrency:
 jobs:
   regional-americas:
     runs-on: ubuntu-latest
-    # Prebuilt image already has Chromium + every OS dep (fonts included)
-    # baked in, so we skip "npx playwright install --with-deps chromium"
-    # entirely below - that's what was re-downloading 21MB of fonts (plus
-    # the Chromium binary itself) on every single job, every run.
-    # IMPORTANT: this tag must match the EXACT "playwright" version that
-    # npm actually installs. Right now engine/package.json still pins it
-    # as "^1.52.0" (a range, not an exact version) - that's why different
-    # runs have resolved to different versions (1.52.0, then 1.63.0) and
-    # kept breaking this image match. Fix that at the source: in the
-    # spotify-chart-engine repo, change package.json to an EXACT version
-    # (no "^"), e.g. "playwright": "1.63.0", commit the regenerated
-    # package-lock.json too, and only then this tag will stay correct
-    # run after run instead of drifting again.
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
+    # Went back to plain apt-based Playwright install on every job (slower
+    # per-job than the Docker-image shortcut we tried, but that shortcut
+    # made jobs fail outright on a flaky image pull instead of just being
+    # slow - since regional-merge needs ALL 4 regions to succeed together,
+    # one flaky pull anywhere meant re-running the whole thing. Reliability
+    # over speed, per your call.
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -41,14 +31,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-song-americas.json auth.json
       - name: Run regional-americas.js
@@ -64,9 +49,6 @@ jobs:
 
   regional-europe:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -80,14 +62,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-song-europe.json auth.json
       - name: Run regional-europe.js
@@ -103,9 +80,6 @@ jobs:
 
   regional-asia:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -119,14 +93,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-song-asia.json auth.json
       - name: Run regional-asia.js
@@ -142,9 +111,6 @@ jobs:
 
   regional-mea:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -158,14 +124,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-song-mea.json auth.json
       - name: Run regional-mea.js
@@ -181,9 +142,6 @@ jobs:
 
   album-americas:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -197,14 +155,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-album-americas.json auth.json
       - name: Run album-americas.js
@@ -220,9 +173,6 @@ jobs:
 
   album-europe:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -236,14 +186,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-album-europe.json auth.json
       - name: Run album-europe.js
@@ -259,9 +204,6 @@ jobs:
 
   album-asia:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -275,14 +217,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-album-asia.json auth.json
       - name: Run album-asia.js
@@ -298,9 +235,6 @@ jobs:
 
   album-mea:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -314,14 +248,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-album-mea.json auth.json
       - name: Run album-mea.js
@@ -337,9 +266,6 @@ jobs:
 
   artist-americas:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -353,14 +279,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-artist-americas.json auth.json
       - name: Run artist-americas.js
@@ -376,9 +297,6 @@ jobs:
 
   artist-europe:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -392,14 +310,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-artist-europe.json auth.json
       - name: Run artist-europe.js
@@ -415,9 +328,6 @@ jobs:
 
   artist-asia:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -431,14 +341,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-artist-asia.json auth.json
       - name: Run artist-asia.js
@@ -454,9 +359,6 @@ jobs:
 
   artist-mea:
     runs-on: ubuntu-latest
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -470,14 +372,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-artist-mea.json auth.json
       - name: Run artist-mea.js
@@ -494,7 +391,6 @@ jobs:
   regional-merge:
     needs: [regional-americas, regional-europe, regional-asia, regional-mea]
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -535,6 +431,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Random pause before the FIRST push attempt too (not just on
+          # retry after a conflict) - song/artist/album/global publish in
+          # parallel and, if they all reach "git push" at the exact same
+          # moment, they collide before the retry logic even gets a
+          # chance to help. A random 0-5s jitter here spreads out the 4
+          # jobs' first attempts so they're less likely to land together.
+          sleep $((RANDOM % 6))
+
           attempt=0
           while true; do
             attempt=$((attempt+1))
@@ -542,6 +446,7 @@ jobs:
             node engine/prepare-song.js
             node engine/update-final.js song
 
+            sleep 0.5
             git add -A -- ':!auth.json' ':!node_modules' ':!engine'
 
             if git diff --cached --quiet; then
@@ -572,7 +477,6 @@ jobs:
   album-merge:
     needs: [album-americas, album-europe, album-asia, album-mea]
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -613,6 +517,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Random pause before the FIRST push attempt too (not just on
+          # retry after a conflict) - song/artist/album/global publish in
+          # parallel and, if they all reach "git push" at the exact same
+          # moment, they collide before the retry logic even gets a
+          # chance to help. A random 0-5s jitter here spreads out the 4
+          # jobs' first attempts so they're less likely to land together.
+          sleep $((RANDOM % 6))
+
           attempt=0
           while true; do
             attempt=$((attempt+1))
@@ -620,6 +532,7 @@ jobs:
             node engine/prepare-album.js
             node engine/update-final.js album
 
+            sleep 0.5
             git add -A -- ':!auth.json' ':!node_modules' ':!engine'
 
             if git diff --cached --quiet; then
@@ -650,7 +563,6 @@ jobs:
   artist-merge:
     needs: [artist-americas, artist-europe, artist-asia, artist-mea]
     runs-on: ubuntu-latest
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -691,6 +603,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Random pause before the FIRST push attempt too (not just on
+          # retry after a conflict) - song/artist/album/global publish in
+          # parallel and, if they all reach "git push" at the exact same
+          # moment, they collide before the retry logic even gets a
+          # chance to help. A random 0-5s jitter here spreads out the 4
+          # jobs' first attempts so they're less likely to land together.
+          sleep $((RANDOM % 6))
+
           attempt=0
           while true; do
             attempt=$((attempt+1))
@@ -698,6 +618,7 @@ jobs:
             node engine/prepare-artist.js
             node engine/update-final.js artist
 
+            sleep 0.5
             git add -A -- ':!auth.json' ':!node_modules' ':!engine'
 
             if git diff --cached --quiet; then
@@ -737,7 +658,6 @@ jobs:
     # job is kept on the plain runner with Playwright installed the normal
     # apt way instead). It's still faster than before thanks to the
     # node_modules cache below.
-    timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
         uses: actions/checkout@v4
@@ -751,17 +671,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Cache node_modules
-        uses: actions/cache@v4
-        with:
-          path: engine/node_modules
-          key: node-modules-v2-${{ runner.os }}-${{ hashFiles('engine/package-lock.json') }}
-      - name: Install engine dependencies
+      - name: Use prebuilt node_modules (baked into the image, nothing to install)
         working-directory: engine
-        run: npm install
-      - name: Install Playwright browser
-        working-directory: engine
-        run: npx playwright install --with-deps chromium
+        run: ln -s /prebuilt/node_modules node_modules
       - name: Use committed Spotify session
         run: cp engine/auth-global.json auth.json
       - name: Run global.js
@@ -771,6 +683,14 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Random pause before the FIRST push attempt too (not just on
+          # retry after a conflict) - song/artist/album/global publish in
+          # parallel and, if they all reach "git push" at the exact same
+          # moment, they collide before the retry logic even gets a
+          # chance to help. A random 0-5s jitter here spreads out the 4
+          # jobs' first attempts so they're less likely to land together.
+          sleep $((RANDOM % 6))
+
           attempt=0
           while true; do
             attempt=$((attempt+1))
@@ -778,6 +698,7 @@ jobs:
             node engine/prepare-global.js
             node engine/update-final.js global
 
+            sleep 0.5
             git add -A -- ':!auth.json' ':!node_modules' ':!engine'
 
             if git diff --cached --quiet; then
