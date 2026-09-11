@@ -727,16 +727,16 @@ jobs:
 
   global:
     runs-on: ubuntu-latest
-    # This job used to be the LAST one defined in the file with no "needs"
-    # of its own, so when all 13 independent jobs (4 regional + 4 album +
-    # 4 artist + this one) fire at once on trigger and your account's
-    # concurrent-job limit is smaller than 13, "global" is typically the
-    # one left waiting longest in the queue - that's very likely the real
-    # reason it "mentok telat" compared to the others. Making every job
-    # faster (this container swap) shrinks that queue time for everyone,
-    # global included, since runner slots free up sooner.
-    container:
-      image: mcr.microsoft.com/playwright:v1.63.0-noble
+    # NOTE: unlike the other 12 scrape jobs (regional/album/artist), this
+    # one both scrapes AND publishes to git in the same job - it never got
+    # split into a separate "collect" + "merge" job pair. That means it
+    # can't use the `container:` Playwright-image shortcut the other jobs
+    # use (a job-level `container:` runs every step, including the git
+    # commit/push at the bottom, inside that container - and the git
+    # commands there failed with "fatal: not in a git directory", so this
+    # job is kept on the plain runner with Playwright installed the normal
+    # apt way instead). It's still faster than before thanks to the
+    # node_modules cache below.
     timeout-minutes: 30
     steps:
       - name: Checkout this repo (workflow + data)
@@ -759,6 +759,9 @@ jobs:
       - name: Install engine dependencies
         working-directory: engine
         run: npm install
+      - name: Install Playwright browser
+        working-directory: engine
+        run: npx playwright install --with-deps chromium
       - name: Use committed Spotify session
         run: cp engine/auth-global.json auth.json
       - name: Run global.js
