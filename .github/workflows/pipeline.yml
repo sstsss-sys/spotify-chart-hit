@@ -541,50 +541,79 @@ jobs:
           node-version: 20
       - name: Wait 3s before merging (lets any last artifact write settle)
         run: sleep 3
-      - name: Run merge-regional.js
-        run: node engine/merge-regional.js
       - name: Publish song chart (updates final.json's 'song' section on its own)
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Raw scrape output this job owns. `git reset --hard` below would
+          # wipe it, so it is parked outside the repo first.
+          SCRAPED="regional-americas.json regional-europe.json regional-asia.json regional-mea.json chart-dates-americas.json chart-dates-europe.json chart-dates-asia.json chart-dates-mea.json"
+
+          # The ONLY paths this job may ever commit. Anything outside this
+          # list belongs to a sibling job and must arrive via origin/main.
+          OWNED="$SCRAPED regional.json data/song.json data/history/yesterday-daily-song.json data/history/previous-weekly-song.json final.json"
+
+          mkdir -p /tmp/scraped
+          for f in $SCRAPED; do
+            if [ -f "$f" ]; then cp "$f" /tmp/scraped/; fi
+          done
+
           attempt=0
-          while true; do
-            attempt=$((attempt+1))
+          while [ "$attempt" -lt 10 ]; do
+            attempt=$((attempt + 1))
 
+            # Full sync to main. `--hard`, NOT `--mixed`: `--mixed` leaves the
+            # working tree on the old checkout, and `git add -A` then commits
+            # every sibling section's stale file back as a silent revert. That
+            # is what froze data/*.json on day one and made streamChange
+            # measure against day one forever.
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Put back this job's own scrape output, and nothing else.
+            cp -a /tmp/scraped/. .
+
+            # Rebuilt every attempt, on top of the data/ and final.json
+            # that main actually has right now.
+            node engine/merge-regional.js
             node engine/prepare-song.js
-
-            sleep 3
             node engine/update-final.js song
 
-            sleep 3
-            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            # Explicit paths instead of `git add -A`, so touching a sibling
+            # section is structurally impossible. auth.json can no longer be
+            # staged even by accident.
+            TO_ADD=""
+            for f in $OWNED; do
+              if [ -e "$f" ]; then TO_ADD="$TO_ADD $f"; fi
+            done
+            if [ -z "$TO_ADD" ]; then
+              echo "Nothing to stage."
+              exit 0
+            fi
+            git add -- $TO_ADD
 
             if git diff --cached --quiet; then
               echo "No changes to commit."
-              break
+              exit 0
             fi
 
             git commit -m "chore: update song chart"
 
             if git push; then
               echo "Pushed on attempt $attempt."
-              sleep 3
-              break
+              exit 0
             fi
 
             echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
-            git reset --soft HEAD~1
-            git fetch origin main
-            git reset --mixed origin/main
-            git checkout HEAD -- final.json 2>/dev/null || true
             sleep 3
-
-            if [ "$attempt" -ge 10 ]; then
-              echo "Giving up after 10 attempts."
-              exit 1
-            fi
           done
+
+          echo "Giving up after 10 attempts."
+          exit 1
 
   album-merge:
     needs: [album-americas, album-europe, album-asia, album-mea]
@@ -625,50 +654,79 @@ jobs:
           node-version: 20
       - name: Wait 3s before merging (lets any last artifact write settle)
         run: sleep 3
-      - name: Run merge-album.js
-        run: node engine/merge-album.js
       - name: Publish album chart (updates final.json's 'album' section on its own)
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Raw scrape output this job owns. `git reset --hard` below would
+          # wipe it, so it is parked outside the repo first.
+          SCRAPED="album-americas.json album-europe.json album-asia.json album-mea.json chart-album-americas.json chart-album-europe.json chart-album-asia.json chart-album-mea.json"
+
+          # The ONLY paths this job may ever commit. Anything outside this
+          # list belongs to a sibling job and must arrive via origin/main.
+          OWNED="$SCRAPED album.json data/album.json data/history/previous-weekly-album.json final.json"
+
+          mkdir -p /tmp/scraped
+          for f in $SCRAPED; do
+            if [ -f "$f" ]; then cp "$f" /tmp/scraped/; fi
+          done
+
           attempt=0
-          while true; do
-            attempt=$((attempt+1))
+          while [ "$attempt" -lt 10 ]; do
+            attempt=$((attempt + 1))
 
+            # Full sync to main. `--hard`, NOT `--mixed`: `--mixed` leaves the
+            # working tree on the old checkout, and `git add -A` then commits
+            # every sibling section's stale file back as a silent revert. That
+            # is what froze data/*.json on day one and made streamChange
+            # measure against day one forever.
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Put back this job's own scrape output, and nothing else.
+            cp -a /tmp/scraped/. .
+
+            # Rebuilt every attempt, on top of the data/ and final.json
+            # that main actually has right now.
+            node engine/merge-album.js
             node engine/prepare-album.js
-
-            sleep 3
             node engine/update-final.js album
 
-            sleep 3
-            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            # Explicit paths instead of `git add -A`, so touching a sibling
+            # section is structurally impossible. auth.json can no longer be
+            # staged even by accident.
+            TO_ADD=""
+            for f in $OWNED; do
+              if [ -e "$f" ]; then TO_ADD="$TO_ADD $f"; fi
+            done
+            if [ -z "$TO_ADD" ]; then
+              echo "Nothing to stage."
+              exit 0
+            fi
+            git add -- $TO_ADD
 
             if git diff --cached --quiet; then
               echo "No changes to commit."
-              break
+              exit 0
             fi
 
             git commit -m "chore: update album chart"
 
             if git push; then
               echo "Pushed on attempt $attempt."
-              sleep 3
-              break
+              exit 0
             fi
 
             echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
-            git reset --soft HEAD~1
-            git fetch origin main
-            git reset --mixed origin/main
-            git checkout HEAD -- final.json 2>/dev/null || true
             sleep 3
-
-            if [ "$attempt" -ge 10 ]; then
-              echo "Giving up after 10 attempts."
-              exit 1
-            fi
           done
+
+          echo "Giving up after 10 attempts."
+          exit 1
 
   artist-merge:
     needs: [artist-americas, artist-europe, artist-asia, artist-mea]
@@ -709,50 +767,79 @@ jobs:
           node-version: 20
       - name: Wait 3s before merging (lets any last artifact write settle)
         run: sleep 3
-      - name: Run merge-artist.js
-        run: node engine/merge-artist.js
       - name: Publish artist chart (updates final.json's 'artist' section on its own)
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Raw scrape output this job owns. `git reset --hard` below would
+          # wipe it, so it is parked outside the repo first.
+          SCRAPED="artist-americas.json artist-europe.json artist-asia.json artist-mea.json chart-artist-americas.json chart-artist-europe.json chart-artist-asia.json chart-artist-mea.json"
+
+          # The ONLY paths this job may ever commit. Anything outside this
+          # list belongs to a sibling job and must arrive via origin/main.
+          OWNED="$SCRAPED artist.json data/artist.json data/history/yesterday-daily-artist.json data/history/previous-weekly-artist.json final.json"
+
+          mkdir -p /tmp/scraped
+          for f in $SCRAPED; do
+            if [ -f "$f" ]; then cp "$f" /tmp/scraped/; fi
+          done
+
           attempt=0
-          while true; do
-            attempt=$((attempt+1))
+          while [ "$attempt" -lt 10 ]; do
+            attempt=$((attempt + 1))
 
+            # Full sync to main. `--hard`, NOT `--mixed`: `--mixed` leaves the
+            # working tree on the old checkout, and `git add -A` then commits
+            # every sibling section's stale file back as a silent revert. That
+            # is what froze data/*.json on day one and made streamChange
+            # measure against day one forever.
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Put back this job's own scrape output, and nothing else.
+            cp -a /tmp/scraped/. .
+
+            # Rebuilt every attempt, on top of the data/ and final.json
+            # that main actually has right now.
+            node engine/merge-artist.js
             node engine/prepare-artist.js
-
-            sleep 3
             node engine/update-final.js artist
 
-            sleep 3
-            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            # Explicit paths instead of `git add -A`, so touching a sibling
+            # section is structurally impossible. auth.json can no longer be
+            # staged even by accident.
+            TO_ADD=""
+            for f in $OWNED; do
+              if [ -e "$f" ]; then TO_ADD="$TO_ADD $f"; fi
+            done
+            if [ -z "$TO_ADD" ]; then
+              echo "Nothing to stage."
+              exit 0
+            fi
+            git add -- $TO_ADD
 
             if git diff --cached --quiet; then
               echo "No changes to commit."
-              break
+              exit 0
             fi
 
             git commit -m "chore: update artist chart"
 
             if git push; then
               echo "Pushed on attempt $attempt."
-              sleep 3
-              break
+              exit 0
             fi
 
             echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
-            git reset --soft HEAD~1
-            git fetch origin main
-            git reset --mixed origin/main
-            git checkout HEAD -- final.json 2>/dev/null || true
             sleep 3
-
-            if [ "$attempt" -ge 10 ]; then
-              echo "Giving up after 10 attempts."
-              exit 1
-            fi
           done
+
+          echo "Giving up after 10 attempts."
+          exit 1
 
   global:
     runs-on: ubuntu-latest
@@ -796,43 +883,74 @@ jobs:
         run: node engine/global.js
       - name: Publish global chart (updates final.json's 'global' section on its own)
         run: |
+          set -euo pipefail
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          # Raw scrape output this job owns. `git reset --hard` below would
+          # wipe it, so it is parked outside the repo first.
+          SCRAPED="global-chart.json global-chart-dates.json"
+
+          # The ONLY paths this job may ever commit. Anything outside this
+          # list belongs to a sibling job and must arrive via origin/main.
+          OWNED="$SCRAPED data/global.json data/history/yesterday-daily-global.json data/history/previous-weekly-global.json final.json"
+
+          mkdir -p /tmp/scraped
+          for f in $SCRAPED; do
+            if [ -f "$f" ]; then cp "$f" /tmp/scraped/; fi
+          done
+
           attempt=0
-          while true; do
-            attempt=$((attempt+1))
+          while [ "$attempt" -lt 10 ]; do
+            attempt=$((attempt + 1))
 
+            # Full sync to main. `--hard`, NOT `--mixed`: `--mixed` leaves the
+            # working tree on the old checkout, and `git add -A` then commits
+            # every sibling section's stale file back as a silent revert. That
+            # is what froze data/*.json on day one and made streamChange
+            # measure against day one forever.
+            git fetch origin main
+            git reset --hard origin/main
+
+            # Put back this job's own scrape output, and nothing else.
+            cp -a /tmp/scraped/. .
+
+            # global.js already ran once above and must NOT run again in
+            # here - a retry would re-hit Spotify's API for nothing. Its
+            # output is restored from /tmp/scraped instead.
             node engine/prepare-global.js
-
-            sleep 3
             node engine/update-final.js global
 
-            sleep 3
-            git add -A -- ':!auth.json' ':!node_modules' ':!engine'
+
+            # Explicit paths instead of `git add -A`, so touching a sibling
+            # section is structurally impossible. auth.json can no longer be
+            # staged even by accident.
+            TO_ADD=""
+            for f in $OWNED; do
+              if [ -e "$f" ]; then TO_ADD="$TO_ADD $f"; fi
+            done
+            if [ -z "$TO_ADD" ]; then
+              echo "Nothing to stage."
+              exit 0
+            fi
+            git add -- $TO_ADD
 
             if git diff --cached --quiet; then
               echo "No changes to commit."
-              break
+              exit 0
             fi
 
             git commit -m "chore: update global chart"
 
             if git push; then
               echo "Pushed on attempt $attempt."
-              sleep 3
-              break
+              exit 0
             fi
 
             echo "Push rejected (attempt $attempt) - another section published in between. Re-syncing and retrying..."
-            git reset --soft HEAD~1
-            git fetch origin main
-            git reset --mixed origin/main
-            git checkout HEAD -- final.json 2>/dev/null || true
             sleep 3
-
-            if [ "$attempt" -ge 10 ]; then
-              echo "Giving up after 10 attempts."
-              exit 1
-            fi
           done
+
+          echo "Giving up after 10 attempts."
+          exit 1
