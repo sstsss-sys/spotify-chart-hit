@@ -104,52 +104,104 @@
   {
     "country": "BY",
     "type": "daily",
-    "rank": 8,
-    "previousRank": 7,
+    "rank": 4,
+    "previousRank": 8,
     "peakRank": 1,
-    "appearances": 787,
-    "streams": "4317",
+    "appearances": 788,
+    "streams": "6362",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 1,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "rankChange": 4,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 38,
-    "previousRank": 29,
+    "rank": 12,
+    "previousRank": 38,
     "peakRank": 2,
-    "appearances": 787,
-    "streams": "2375",
+    "appearances": 788,
+    "streams": "3846",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 9,
+    "rankChange": 26,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
+  },
+  {
+    "country": "BY",
+    "type": "daily",
+    "rank": 43,
+    "previousRank": -1,
+    "peakRank": 4,
+    "appearances": 155,
+    "streams": "2182",
+    "track": "Smeraldo Garden Marching Band (feat. Loco)",
+    "artists": [
+      "Jimin",
+      "Loco"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 44,
     "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "BY",
+    "type": "daily",
+    "rank": 89,
+    "previousRank": -1,
+    "peakRank": 3,
+    "appearances": 753,
+    "streams": "1679",
+    "track": "Like Crazy",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e022b46078245d0120690eb560d",
+    "rankChange": 90,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "BY",
+    "type": "daily",
+    "rank": 185,
+    "previousRank": -1,
+    "peakRank": 3,
+    "appearances": 574,
+    "streams": "1207",
+    "track": "Who - Rock Remix",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f150d9f2e5e8148e5032fd7d",
+    "rankChange": 186,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
   },
   {
     "country": "CZ",
     "type": "daily",
-    "rank": 108,
-    "previousRank": 133,
+    "rank": 122,
+    "previousRank": 108,
     "peakRank": 1,
-    "appearances": 475,
-    "streams": "11665",
+    "appearances": 476,
+    "streams": "12302",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 25,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 14,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   }
 ]
