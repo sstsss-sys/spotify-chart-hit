@@ -26,16 +26,16 @@
     "entryStatus": "MOVED_DOWN"
   },
   {
-    "country": "CL",
+    "country": "VE",
     "type": "daily",
-    "rank": 65,
-    "previousRank": 58,
-    "peakRank": 29,
-    "appearances": 981,
+    "rank": 172,
+    "previousRank": -1,
+    "peakRank": 172,
+    "appearances": 1,
     "artist": "Jimin",
     "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 7,
+    "rankChange": 173,
     "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "entryStatus": "NEW_ENTRY"
   }
 ]
