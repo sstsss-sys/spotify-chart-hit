@@ -2,11 +2,11 @@
   {
     "country": "BY",
     "type": "weekly",
-    "rank": 3,
-    "previousRank": 2,
+    "rank": 4,
+    "previousRank": 3,
     "peakRank": 1,
-    "appearances": 112,
-    "streams": "63190",
+    "appearances": 113,
+    "streams": "37328",
     "track": "Who",
     "artists": [
       "Jimin"
@@ -19,137 +19,69 @@
   {
     "country": "BY",
     "type": "weekly",
-    "rank": 5,
+    "rank": 18,
     "previousRank": 5,
     "peakRank": 2,
-    "appearances": 112,
-    "streams": "38429",
+    "appearances": 113,
+    "streams": "23222",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 0,
-    "direction": "=",
-    "entryStatus": "NO_CHANGE"
+    "rankChange": 13,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "BY",
     "type": "weekly",
-    "rank": 48,
-    "previousRank": 24,
+    "rank": 169,
+    "previousRank": 48,
     "peakRank": 4,
-    "appearances": 107,
-    "streams": "15238",
+    "appearances": 108,
+    "streams": "9269",
     "track": "Like Crazy",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e022b46078245d0120690eb560d",
-    "rankChange": 24,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
-  },
-  {
-    "country": "BY",
-    "type": "weekly",
-    "rank": 97,
-    "previousRank": 32,
-    "peakRank": 6,
-    "appearances": 86,
-    "streams": "11995",
-    "track": "Rebirth (Intro)",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 65,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
-  },
-  {
-    "country": "BY",
-    "type": "weekly",
-    "rank": 146,
-    "previousRank": 171,
-    "peakRank": 4,
-    "appearances": 83,
-    "streams": "10056",
-    "track": "Who - Rock Remix",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f150d9f2e5e8148e5032fd7d",
-    "rankChange": 25,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
-  },
-  {
-    "country": "CZ",
-    "type": "weekly",
-    "rank": 191,
-    "previousRank": 164,
-    "peakRank": 5,
-    "appearances": 67,
-    "streams": "69702",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 27,
+    "rankChange": 121,
     "direction": "down",
     "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 4,
-    "previousRank": 5,
+    "rank": 6,
+    "previousRank": 4,
     "peakRank": 1,
-    "appearances": 790,
-    "streams": "6372",
+    "appearances": 791,
+    "streams": "4623",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 1,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 2,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 11,
-    "previousRank": 14,
+    "rank": 14,
+    "previousRank": 11,
     "peakRank": 2,
-    "appearances": 790,
-    "streams": "3862",
+    "appearances": 791,
+    "streams": "3498",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
     "rankChange": 3,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
-  },
-  {
-    "country": "BY",
-    "type": "daily",
-    "rank": 95,
-    "previousRank": 177,
-    "peakRank": 3,
-    "appearances": 755,
-    "streams": "1660",
-    "track": "Like Crazy",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e022b46078245d0120690eb560d",
-    "rankChange": 82,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   }
 ]
