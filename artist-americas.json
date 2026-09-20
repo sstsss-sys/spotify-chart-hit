@@ -24,18 +24,5 @@
     "rankChange": 35,
     "direction": "up",
     "entryStatus": "MOVED_UP"
-  },
-  {
-    "country": "VE",
-    "type": "daily",
-    "rank": 116,
-    "previousRank": -1,
-    "peakRank": 116,
-    "appearances": 1,
-    "artist": "Jimin",
-    "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 117,
-    "direction": "down",
-    "entryStatus": "NEW_ENTRY"
   }
 ]
