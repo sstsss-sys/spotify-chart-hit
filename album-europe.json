@@ -2,17 +2,17 @@
   {
     "country": "BY",
     "type": "weekly",
-    "rank": 7,
-    "previousRank": 1,
+    "rank": 2,
+    "previousRank": 7,
     "peakRank": 1,
-    "appearances": 113,
+    "appearances": 114,
     "album": "MUSE",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 6,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "rankChange": 5,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   }
 ]
