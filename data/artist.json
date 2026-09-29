@@ -1,20 +1,7 @@
 {
-  "dailyLastUpdate": "2026-09-27",
+  "dailyLastUpdate": "2026-09-28",
   "weeklyLastUpdate": "2026-09-24",
   "entries": [
-    {
-      "country": "BG",
-      "type": "daily",
-      "rank": 165,
-      "previousRank": -1,
-      "peakRank": 1,
-      "appearances": 1000,
-      "artist": "Jimin",
-      "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 166,
-      "direction": "down",
-      "entryStatus": "RE_ENTRY"
-    },
     {
       "country": "BY",
       "type": "weekly",
@@ -31,13 +18,13 @@
     {
       "country": "BY",
       "type": "daily",
-      "rank": 11,
-      "previousRank": 7,
+      "rank": 39,
+      "previousRank": 11,
       "peakRank": 1,
-      "appearances": 965,
+      "appearances": 966,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 4,
+      "rankChange": 28,
       "direction": "down",
       "entryStatus": "MOVED_DOWN"
     },
@@ -57,13 +44,13 @@
     {
       "country": "JP",
       "type": "daily",
-      "rank": 138,
-      "previousRank": 133,
+      "rank": 141,
+      "previousRank": 138,
       "peakRank": 13,
-      "appearances": 1306,
+      "appearances": 1307,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 5,
+      "rankChange": 3,
       "direction": "down",
       "entryStatus": "MOVED_DOWN"
     },
@@ -83,15 +70,15 @@
     {
       "country": "KR",
       "type": "daily",
-      "rank": 27,
+      "rank": 22,
       "previousRank": 27,
       "peakRank": 1,
-      "appearances": 1513,
+      "appearances": 1514,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 0,
-      "direction": "=",
-      "entryStatus": "NO_CHANGE"
+      "rankChange": 5,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
       "country": "KZ",
@@ -109,13 +96,13 @@
     {
       "country": "KZ",
       "type": "daily",
-      "rank": 91,
-      "previousRank": 83,
+      "rank": 139,
+      "previousRank": 91,
       "peakRank": 1,
-      "appearances": 964,
+      "appearances": 965,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 8,
+      "rankChange": 48,
       "direction": "down",
       "entryStatus": "MOVED_DOWN"
     },
@@ -135,15 +122,15 @@
     {
       "country": "SG",
       "type": "daily",
-      "rank": 71,
-      "previousRank": 122,
+      "rank": 83,
+      "previousRank": 71,
       "peakRank": 2,
-      "appearances": 1342,
+      "appearances": 1343,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 51,
-      "direction": "up",
-      "entryStatus": "MOVED_UP"
+      "rankChange": 12,
+      "direction": "down",
+      "entryStatus": "MOVED_DOWN"
     },
     {
       "country": "TH",
@@ -161,15 +148,15 @@
     {
       "country": "TH",
       "type": "daily",
-      "rank": 151,
-      "previousRank": 144,
+      "rank": 130,
+      "previousRank": 151,
       "peakRank": 1,
-      "appearances": 1387,
+      "appearances": 1388,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 7,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
+      "rankChange": 21,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
       "country": "VE",
@@ -187,13 +174,13 @@
     {
       "country": "VE",
       "type": "daily",
-      "rank": 105,
+      "rank": 122,
       "previousRank": -1,
-      "peakRank": 105,
+      "peakRank": 122,
       "appearances": 1,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 106,
+      "rankChange": 123,
       "direction": "down",
       "entryStatus": "NEW_ENTRY"
     }
