@@ -87,17 +87,17 @@
   {
     "country": "BY",
     "type": "daily",
-    "rank": 3,
-    "previousRank": 6,
+    "rank": 1,
+    "previousRank": 3,
     "peakRank": 1,
-    "appearances": 807,
-    "streams": "8641",
+    "appearances": 808,
+    "streams": "10955",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 3,
+    "rankChange": 2,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
@@ -105,32 +105,32 @@
     "country": "BY",
     "type": "daily",
     "rank": 10,
-    "previousRank": 19,
+    "previousRank": 10,
     "peakRank": 2,
-    "appearances": 807,
-    "streams": "4714",
+    "appearances": 808,
+    "streams": "3766",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 9,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 71,
-    "previousRank": 161,
-    "peakRank": 3,
-    "appearances": 765,
-    "streams": "2007",
-    "track": "Like Crazy",
+    "rank": 16,
+    "previousRank": 106,
+    "peakRank": 4,
+    "appearances": 66,
+    "streams": "3422",
+    "track": "Set Me Free Pt.2",
     "artists": [
       "Jimin"
     ],
-    "image": "https://i.scdn.co/image/ab67616d00001e022b46078245d0120690eb560d",
+    "image": "https://i.scdn.co/image/ab67616d00001e024f4ec2c2a865569bd4a067a4",
     "rankChange": 90,
     "direction": "up",
     "entryStatus": "MOVED_UP"
@@ -138,69 +138,35 @@
   {
     "country": "BY",
     "type": "daily",
-    "rank": 106,
-    "previousRank": -1,
-    "peakRank": 4,
-    "appearances": 65,
-    "streams": "1744",
-    "track": "Set Me Free Pt.2",
+    "rank": 92,
+    "previousRank": 71,
+    "peakRank": 3,
+    "appearances": 766,
+    "streams": "1637",
+    "track": "Like Crazy",
     "artists": [
       "Jimin"
     ],
-    "image": "https://i.scdn.co/image/ab67616d00001e024f4ec2c2a865569bd4a067a4",
-    "rankChange": 107,
-    "direction": "down",
-    "entryStatus": "RE_ENTRY"
-  },
-  {
-    "country": "BY",
-    "type": "daily",
-    "rank": 184,
-    "previousRank": -1,
-    "peakRank": 4,
-    "appearances": 593,
-    "streams": "1393",
-    "track": "Rebirth (Intro)",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 185,
-    "direction": "down",
-    "entryStatus": "RE_ENTRY"
-  },
-  {
-    "country": "BG",
-    "type": "daily",
-    "rank": 179,
-    "previousRank": 138,
-    "peakRank": 1,
-    "appearances": 736,
-    "streams": "2273",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 41,
+    "image": "https://i.scdn.co/image/ab67616d00001e022b46078245d0120690eb560d",
+    "rankChange": 21,
     "direction": "down",
     "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "CZ",
     "type": "daily",
-    "rank": 128,
-    "previousRank": -1,
+    "rank": 107,
+    "previousRank": 128,
     "peakRank": 1,
-    "appearances": 484,
-    "streams": "11966",
+    "appearances": 485,
+    "streams": "11934",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 129,
-    "direction": "down",
-    "entryStatus": "RE_ENTRY"
+    "rankChange": 21,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   }
 ]
