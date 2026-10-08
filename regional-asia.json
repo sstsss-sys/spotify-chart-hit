@@ -121,119 +121,102 @@
   {
     "country": "JP",
     "type": "daily",
-    "rank": 76,
-    "previousRank": 71,
+    "rank": 78,
+    "previousRank": 76,
     "peakRank": 1,
-    "appearances": 810,
-    "streams": "82092",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 5,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
-  },
-  {
-    "country": "KZ",
-    "type": "daily",
-    "rank": 64,
-    "previousRank": 43,
-    "peakRank": 1,
-    "appearances": 603,
-    "streams": "7057",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 21,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
-  },
-  {
-    "country": "SG",
-    "type": "daily",
-    "rank": 8,
-    "previousRank": 5,
-    "peakRank": 1,
-    "appearances": 810,
-    "streams": "27449",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 3,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
-  },
-  {
-    "country": "KR",
-    "type": "daily",
-    "rank": 5,
-    "previousRank": 7,
-    "peakRank": 1,
-    "appearances": 810,
-    "streams": "55939",
+    "appearances": 811,
+    "streams": "80825",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
     "rankChange": 2,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
+  },
+  {
+    "country": "KZ",
+    "type": "daily",
+    "rank": 46,
+    "previousRank": 64,
+    "peakRank": 1,
+    "appearances": 604,
+    "streams": "7900",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 18,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
+  },
+  {
+    "country": "SG",
+    "type": "daily",
+    "rank": 3,
+    "previousRank": 8,
+    "peakRank": 1,
+    "appearances": 811,
+    "streams": "30457",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 5,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
   {
     "country": "KR",
     "type": "daily",
-    "rank": 83,
-    "previousRank": 121,
+    "rank": 7,
+    "previousRank": 5,
+    "peakRank": 1,
+    "appearances": 811,
+    "streams": "48467",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 2,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
+  },
+  {
+    "country": "KR",
+    "type": "daily",
+    "rank": 165,
+    "previousRank": 83,
     "peakRank": 2,
-    "appearances": 790,
-    "streams": "17510",
+    "appearances": 791,
+    "streams": "13888",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 38,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
-  },
-  {
-    "country": "TW",
-    "type": "daily",
-    "rank": 147,
-    "previousRank": -1,
-    "peakRank": 1,
-    "appearances": 809,
-    "streams": "14371",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 148,
+    "rankChange": 82,
     "direction": "down",
-    "entryStatus": "RE_ENTRY"
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "TH",
     "type": "daily",
-    "rank": 68,
-    "previousRank": 69,
+    "rank": 60,
+    "previousRank": 68,
     "peakRank": 1,
-    "appearances": 805,
-    "streams": "46290",
+    "appearances": 806,
+    "streams": "49930",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 1,
+    "rankChange": 8,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   }
