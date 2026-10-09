@@ -202,5 +202,22 @@
     "rankChange": 0,
     "direction": "=",
     "entryStatus": "NO_CHANGE"
+  },
+  {
+    "country": "CZ",
+    "type": "daily",
+    "rank": 123,
+    "previousRank": -1,
+    "peakRank": 1,
+    "appearances": 487,
+    "streams": "13605",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 124,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
   }
 ]
