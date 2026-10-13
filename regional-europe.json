@@ -88,102 +88,136 @@
     "country": "BY",
     "type": "daily",
     "rank": 2,
-    "previousRank": 3,
+    "previousRank": 2,
     "peakRank": 1,
-    "appearances": 815,
-    "streams": "10863",
+    "appearances": 816,
+    "streams": "8246",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 1,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 8,
-    "previousRank": 7,
+    "rank": 7,
+    "previousRank": 8,
     "peakRank": 2,
-    "appearances": 815,
-    "streams": "4517",
+    "appearances": 816,
+    "streams": "4989",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
     "rankChange": 1,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
-  },
-  {
-    "country": "BY",
-    "type": "daily",
-    "rank": 17,
-    "previousRank": 105,
-    "peakRank": 4,
-    "appearances": 73,
-    "streams": "3307",
-    "track": "Set Me Free Pt.2",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e024f4ec2c2a865569bd4a067a4",
-    "rankChange": 88,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 51,
-    "previousRank": 64,
+    "rank": 35,
+    "previousRank": 51,
     "peakRank": 3,
-    "appearances": 773,
-    "streams": "2241",
+    "appearances": 774,
+    "streams": "2310",
     "track": "Like Crazy",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e022b46078245d0120690eb560d",
-    "rankChange": 13,
+    "rankChange": 16,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
   {
     "country": "BY",
     "type": "daily",
-    "rank": 194,
-    "previousRank": 172,
+    "rank": 75,
+    "previousRank": 194,
     "peakRank": 4,
-    "appearances": 598,
-    "streams": "1210",
+    "appearances": 599,
+    "streams": "1796",
     "track": "Rebirth (Intro)",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 22,
+    "rankChange": 119,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
+  },
+  {
+    "country": "BY",
+    "type": "daily",
+    "rank": 104,
+    "previousRank": 17,
+    "peakRank": 4,
+    "appearances": 74,
+    "streams": "1570",
+    "track": "Set Me Free Pt.2",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e024f4ec2c2a865569bd4a067a4",
+    "rankChange": 87,
     "direction": "down",
     "entryStatus": "MOVED_DOWN"
   },
   {
+    "country": "BY",
+    "type": "daily",
+    "rank": 134,
+    "previousRank": -1,
+    "peakRank": 3,
+    "appearances": 583,
+    "streams": "1415",
+    "track": "Who - Rock Remix",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f150d9f2e5e8148e5032fd7d",
+    "rankChange": 135,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "BY",
+    "type": "daily",
+    "rank": 155,
+    "previousRank": -1,
+    "peakRank": 8,
+    "appearances": 433,
+    "streams": "1332",
+    "track": "Who - Acoustic Remix",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f150d9f2e5e8148e5032fd7d",
+    "rankChange": 156,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  },
+  {
     "country": "CZ",
     "type": "daily",
-    "rank": 109,
-    "previousRank": 139,
+    "rank": 146,
+    "previousRank": 109,
     "peakRank": 1,
-    "appearances": 490,
-    "streams": "11735",
+    "appearances": 491,
+    "streams": "11751",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 30,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 37,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   }
 ]
