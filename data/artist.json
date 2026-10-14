@@ -1,5 +1,5 @@
 {
-  "dailyLastUpdate": "2026-10-12",
+  "dailyLastUpdate": "2026-10-13",
   "weeklyLastUpdate": "2026-10-08",
   "entries": [
     {
@@ -18,15 +18,15 @@
     {
       "country": "BY",
       "type": "daily",
-      "rank": 9,
-      "previousRank": 5,
+      "rank": 5,
+      "previousRank": 9,
       "peakRank": 1,
-      "appearances": 980,
+      "appearances": 981,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
       "rankChange": 4,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
       "country": "JP",
@@ -44,15 +44,15 @@
     {
       "country": "JP",
       "type": "daily",
-      "rank": 131,
-      "previousRank": 113,
+      "rank": 120,
+      "previousRank": 131,
       "peakRank": 13,
-      "appearances": 1321,
+      "appearances": 1322,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 18,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
+      "rankChange": 11,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
       "country": "KR",
@@ -70,13 +70,13 @@
     {
       "country": "KR",
       "type": "daily",
-      "rank": 26,
-      "previousRank": 28,
+      "rank": 21,
+      "previousRank": 26,
       "peakRank": 1,
-      "appearances": 1528,
+      "appearances": 1529,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 2,
+      "rankChange": 5,
       "direction": "up",
       "entryStatus": "MOVED_UP"
     },
@@ -96,15 +96,28 @@
     {
       "country": "KZ",
       "type": "daily",
-      "rank": 17,
-      "previousRank": 32,
+      "rank": 24,
+      "previousRank": 17,
       "peakRank": 1,
-      "appearances": 978,
+      "appearances": 979,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 15,
-      "direction": "up",
-      "entryStatus": "MOVED_UP"
+      "rankChange": 7,
+      "direction": "down",
+      "entryStatus": "MOVED_DOWN"
+    },
+    {
+      "country": "SA",
+      "type": "daily",
+      "rank": 200,
+      "previousRank": -1,
+      "peakRank": 1,
+      "appearances": 1192,
+      "artist": "Jimin",
+      "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
+      "rankChange": 201,
+      "direction": "down",
+      "entryStatus": "RE_ENTRY"
     },
     {
       "country": "SG",
@@ -122,26 +135,26 @@
     {
       "country": "SG",
       "type": "daily",
-      "rank": 115,
-      "previousRank": 101,
+      "rank": 77,
+      "previousRank": 115,
       "peakRank": 2,
-      "appearances": 1357,
+      "appearances": 1358,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 14,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
+      "rankChange": 38,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
       "country": "TH",
       "type": "daily",
-      "rank": 100,
-      "previousRank": 188,
+      "rank": 71,
+      "previousRank": 100,
       "peakRank": 1,
-      "appearances": 1397,
+      "appearances": 1398,
       "artist": "Jimin",
       "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-      "rankChange": 88,
+      "rankChange": 29,
       "direction": "up",
       "entryStatus": "MOVED_UP"
     },
@@ -157,6 +170,19 @@
       "rankChange": 90,
       "direction": "down",
       "entryStatus": "MOVED_DOWN"
+    },
+    {
+      "country": "VE",
+      "type": "daily",
+      "rank": 126,
+      "previousRank": -1,
+      "peakRank": 126,
+      "appearances": 1,
+      "artist": "Jimin",
+      "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
+      "rankChange": 127,
+      "direction": "down",
+      "entryStatus": "NEW_ENTRY"
     }
   ]
 }
