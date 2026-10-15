@@ -121,51 +121,51 @@
   {
     "country": "JP",
     "type": "daily",
-    "rank": 74,
-    "previousRank": 88,
+    "rank": 62,
+    "previousRank": 74,
     "peakRank": 1,
-    "appearances": 817,
-    "streams": "78741",
+    "appearances": 818,
+    "streams": "85747",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 14,
+    "rankChange": 12,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
   {
     "country": "KZ",
     "type": "daily",
-    "rank": 4,
-    "previousRank": 2,
+    "rank": 42,
+    "previousRank": 4,
     "peakRank": 1,
-    "appearances": 610,
-    "streams": "20817",
+    "appearances": 611,
+    "streams": "8545",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 2,
+    "rankChange": 38,
     "direction": "down",
     "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "KZ",
     "type": "daily",
-    "rank": 70,
-    "previousRank": 56,
+    "rank": 192,
+    "previousRank": 70,
     "peakRank": 2,
-    "appearances": 480,
-    "streams": "6998",
+    "appearances": 481,
+    "streams": "4764",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 14,
+    "rankChange": 122,
     "direction": "down",
     "entryStatus": "MOVED_DOWN"
   },
@@ -173,85 +173,68 @@
     "country": "SG",
     "type": "daily",
     "rank": 3,
-    "previousRank": 7,
+    "previousRank": 3,
     "peakRank": 1,
-    "appearances": 817,
-    "streams": "32593",
+    "appearances": 818,
+    "streams": "32894",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 4,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
   },
   {
     "country": "KR",
     "type": "daily",
-    "rank": 3,
-    "previousRank": 6,
+    "rank": 4,
+    "previousRank": 3,
     "peakRank": 1,
-    "appearances": 817,
-    "streams": "59122",
+    "appearances": 818,
+    "streams": "62606",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 3,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 1,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "KR",
     "type": "daily",
-    "rank": 97,
-    "previousRank": 127,
+    "rank": 79,
+    "previousRank": 97,
     "peakRank": 2,
-    "appearances": 797,
-    "streams": "17198",
+    "appearances": 798,
+    "streams": "19553",
     "track": "Be Mine",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 30,
+    "rankChange": 18,
     "direction": "up",
     "entryStatus": "MOVED_UP"
-  },
-  {
-    "country": "TW",
-    "type": "daily",
-    "rank": 106,
-    "previousRank": 96,
-    "peakRank": 1,
-    "appearances": 813,
-    "streams": "16727",
-    "track": "Who",
-    "artists": [
-      "Jimin"
-    ],
-    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 10,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "TH",
     "type": "daily",
-    "rank": 9,
-    "previousRank": 24,
+    "rank": 15,
+    "previousRank": 9,
     "peakRank": 1,
-    "appearances": 812,
-    "streams": "123927",
+    "appearances": 813,
+    "streams": "101075",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 15,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 6,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   }
 ]
