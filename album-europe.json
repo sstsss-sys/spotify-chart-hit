@@ -2,16 +2,16 @@
   {
     "country": "BY",
     "type": "weekly",
-    "rank": 2,
-    "previousRank": 7,
+    "rank": 1,
+    "previousRank": 2,
     "peakRank": 1,
-    "appearances": 116,
+    "appearances": 117,
     "album": "MUSE (WANDER ver.)",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-    "rankChange": 5,
+    "rankChange": 1,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   }
