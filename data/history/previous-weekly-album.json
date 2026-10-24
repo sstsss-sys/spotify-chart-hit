@@ -1,108 +1,60 @@
 {
-  "weeklyLastUpdate": "2026-10-08",
+  "weeklyLastUpdate": "2026-10-15",
   "entries": [
     {
       "country": "BY",
       "type": "weekly",
-      "rank": 2,
-      "previousRank": 7,
+      "rank": 1,
+      "previousRank": 2,
       "peakRank": 1,
-      "appearances": 116,
+      "appearances": 117,
       "album": "MUSE (WANDER ver.)",
       "artists": [
         "Jimin"
       ],
       "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 5,
+      "rankChange": 1,
       "direction": "up",
       "entryStatus": "MOVED_UP"
     },
     {
       "country": "JP",
       "type": "weekly",
-      "rank": 64,
-      "previousRank": 67,
+      "rank": 60,
+      "previousRank": 64,
       "peakRank": 3,
-      "appearances": 116,
+      "appearances": 117,
       "album": "MUSE (WANDER ver.)",
       "artists": [
         "Jimin"
       ],
       "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 3,
+      "rankChange": 4,
       "direction": "up",
       "entryStatus": "MOVED_UP"
     },
     {
       "country": "KZ",
       "type": "weekly",
-      "rank": 40,
-      "previousRank": 34,
+      "rank": 6,
+      "previousRank": 40,
       "peakRank": 1,
-      "appearances": 93,
+      "appearances": 94,
       "album": "MUSE (WANDER ver.)",
       "artists": [
         "Jimin"
       ],
       "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 6,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
+      "rankChange": 34,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
       "country": "PH",
       "type": "weekly",
-      "rank": 171,
-      "previousRank": 162,
+      "rank": 133,
+      "previousRank": 171,
       "peakRank": 8,
-      "appearances": 115,
-      "album": "MUSE (WANDER ver.)",
-      "artists": [
-        "Jimin"
-      ],
-      "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 9,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
-    },
-    {
-      "country": "SG",
-      "type": "weekly",
-      "rank": 25,
-      "previousRank": 25,
-      "peakRank": 1,
-      "appearances": 116,
-      "album": "MUSE (WANDER ver.)",
-      "artists": [
-        "Jimin"
-      ],
-      "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 0,
-      "direction": "=",
-      "entryStatus": "NO_CHANGE"
-    },
-    {
-      "country": "TH",
-      "type": "weekly",
-      "rank": 126,
-      "previousRank": 103,
-      "peakRank": 1,
-      "appearances": 116,
-      "album": "MUSE (WANDER ver.)",
-      "artists": [
-        "Jimin"
-      ],
-      "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 23,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
-    },
-    {
-      "country": "TW",
-      "type": "weekly",
-      "rank": 183,
-      "previousRank": 145,
-      "peakRank": 1,
       "appearances": 116,
       "album": "MUSE (WANDER ver.)",
       "artists": [
@@ -110,24 +62,72 @@
       ],
       "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
       "rankChange": 38,
-      "direction": "down",
-      "entryStatus": "MOVED_DOWN"
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     },
     {
-      "country": "VE",
+      "country": "SG",
       "type": "weekly",
-      "rank": 90,
-      "previousRank": 29,
+      "rank": 28,
+      "previousRank": 25,
       "peakRank": 1,
-      "appearances": 113,
+      "appearances": 117,
       "album": "MUSE (WANDER ver.)",
       "artists": [
         "Jimin"
       ],
       "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
-      "rankChange": 61,
+      "rankChange": 3,
       "direction": "down",
       "entryStatus": "MOVED_DOWN"
+    },
+    {
+      "country": "TH",
+      "type": "weekly",
+      "rank": 53,
+      "previousRank": 126,
+      "peakRank": 1,
+      "appearances": 117,
+      "album": "MUSE (WANDER ver.)",
+      "artists": [
+        "Jimin"
+      ],
+      "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
+      "rankChange": 73,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
+    },
+    {
+      "country": "TW",
+      "type": "weekly",
+      "rank": 163,
+      "previousRank": 183,
+      "peakRank": 1,
+      "appearances": 117,
+      "album": "MUSE (WANDER ver.)",
+      "artists": [
+        "Jimin"
+      ],
+      "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
+      "rankChange": 20,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
+    },
+    {
+      "country": "VE",
+      "type": "weekly",
+      "rank": 57,
+      "previousRank": 90,
+      "peakRank": 1,
+      "appearances": 114,
+      "album": "MUSE (WANDER ver.)",
+      "artists": [
+        "Jimin"
+      ],
+      "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
+      "rankChange": 33,
+      "direction": "up",
+      "entryStatus": "MOVED_UP"
     }
   ]
 }
