@@ -41,23 +41,10 @@
   {
     "country": "JP",
     "type": "daily",
-    "rank": 122,
-    "previousRank": 137,
+    "rank": 120,
+    "previousRank": 122,
     "peakRank": 13,
-    "appearances": 1335,
-    "artist": "Jimin",
-    "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 15,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
-  },
-  {
-    "country": "KZ",
-    "type": "daily",
-    "rank": 122,
-    "previousRank": 124,
-    "peakRank": 1,
-    "appearances": 989,
+    "appearances": 1336,
     "artist": "Jimin",
     "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
     "rankChange": 2,
@@ -65,29 +52,42 @@
     "entryStatus": "MOVED_UP"
   },
   {
-    "country": "SG",
+    "country": "KZ",
     "type": "daily",
-    "rank": 118,
-    "previousRank": 125,
-    "peakRank": 2,
-    "appearances": 1371,
+    "rank": 130,
+    "previousRank": 122,
+    "peakRank": 1,
+    "appearances": 990,
     "artist": "Jimin",
     "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 7,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 8,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
+  },
+  {
+    "country": "SG",
+    "type": "daily",
+    "rank": 140,
+    "previousRank": 118,
+    "peakRank": 2,
+    "appearances": 1372,
+    "artist": "Jimin",
+    "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
+    "rankChange": 22,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "KR",
     "type": "daily",
     "rank": 22,
-    "previousRank": 26,
+    "previousRank": 22,
     "peakRank": 1,
-    "appearances": 1542,
+    "appearances": 1543,
     "artist": "Jimin",
     "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 4,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
   }
 ]
