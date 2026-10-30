@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "country": "VE",
+    "type": "weekly",
+    "rank": 41,
+    "previousRank": -1,
+    "peakRank": 1,
+    "appearances": 115,
+    "album": "MUSE (WANDER ver.)",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e0282601539d4a27061ad90eacb",
+    "rankChange": 42,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  }
+]
