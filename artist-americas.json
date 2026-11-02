@@ -11,5 +11,31 @@
     "rankChange": 135,
     "direction": "down",
     "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "PA",
+    "type": "daily",
+    "rank": 176,
+    "previousRank": -1,
+    "peakRank": 21,
+    "appearances": 233,
+    "artist": "Jimin",
+    "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
+    "rankChange": 177,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "VE",
+    "type": "daily",
+    "rank": 89,
+    "previousRank": -1,
+    "peakRank": 89,
+    "appearances": 1,
+    "artist": "Jimin",
+    "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
+    "rankChange": 90,
+    "direction": "down",
+    "entryStatus": "NEW_ENTRY"
   }
 ]
