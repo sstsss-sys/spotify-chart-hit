@@ -2,27 +2,27 @@
   {
     "country": "BY",
     "type": "weekly",
-    "rank": 9,
+    "rank": 6,
     "previousRank": 9,
     "peakRank": 1,
-    "appearances": 140,
+    "appearances": 141,
     "artist": "Jimin",
     "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 0,
-    "direction": "=",
-    "entryStatus": "NO_CHANGE"
+    "rankChange": 3,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   },
   {
     "country": "BY",
     "type": "daily",
     "rank": 6,
-    "previousRank": 5,
+    "previousRank": 6,
     "peakRank": 1,
-    "appearances": 1003,
+    "appearances": 1004,
     "artist": "Jimin",
     "image": "https://i.scdn.co/image/ab67616100005174cf3a9c35db52ba44f3b921e3",
-    "rankChange": 1,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
   }
 ]
