@@ -36,69 +36,69 @@
   {
     "country": "CL",
     "type": "daily",
-    "rank": 20,
-    "previousRank": 34,
+    "rank": 26,
+    "previousRank": 20,
     "peakRank": 1,
-    "appearances": 791,
-    "streams": "60789",
+    "appearances": 792,
+    "streams": "62073",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 14,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 6,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "CR",
     "type": "daily",
-    "rank": 30,
-    "previousRank": 49,
+    "rank": 14,
+    "previousRank": 30,
     "peakRank": 1,
-    "appearances": 835,
-    "streams": "13593",
+    "appearances": 836,
+    "streams": "14269",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 19,
+    "rankChange": 16,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
   {
     "country": "PY",
     "type": "daily",
-    "rank": 34,
-    "previousRank": -1,
+    "rank": 107,
+    "previousRank": 34,
     "peakRank": 1,
-    "appearances": 779,
-    "streams": "10112",
+    "appearances": 780,
+    "streams": "5682",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 35,
+    "rankChange": 73,
     "direction": "down",
-    "entryStatus": "RE_ENTRY"
+    "entryStatus": "MOVED_DOWN"
   },
   {
     "country": "VE",
     "type": "daily",
-    "rank": 4,
+    "rank": 6,
     "previousRank": 4,
     "peakRank": 1,
-    "appearances": 812,
-    "streams": "21558",
+    "appearances": 813,
+    "streams": "16933",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 0,
-    "direction": "=",
-    "entryStatus": "NO_CHANGE"
+    "rankChange": 2,
+    "direction": "down",
+    "entryStatus": "MOVED_DOWN"
   }
 ]
