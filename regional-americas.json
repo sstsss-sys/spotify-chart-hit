@@ -68,20 +68,88 @@
     "entryStatus": "MOVED_DOWN"
   },
   {
-    "country": "PY",
+    "country": "CL",
     "type": "daily",
-    "rank": 53,
-    "previousRank": 50,
+    "rank": 29,
+    "previousRank": -1,
     "peakRank": 1,
-    "appearances": 783,
-    "streams": "8003",
+    "appearances": 795,
+    "streams": "65230",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 3,
+    "rankChange": 30,
     "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "CR",
+    "type": "daily",
+    "rank": 46,
+    "previousRank": -1,
+    "peakRank": 1,
+    "appearances": 839,
+    "streams": "12670",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 47,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "PY",
+    "type": "daily",
+    "rank": 14,
+    "previousRank": 53,
+    "peakRank": 1,
+    "appearances": 784,
+    "streams": "14541",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 39,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
+  },
+  {
+    "country": "VE",
+    "type": "daily",
+    "rank": 3,
+    "previousRank": -1,
+    "peakRank": 1,
+    "appearances": 815,
+    "streams": "22982",
+    "track": "Who",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 4,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
+  },
+  {
+    "country": "VE",
+    "type": "daily",
+    "rank": 189,
+    "previousRank": -1,
+    "peakRank": 3,
+    "appearances": 321,
+    "streams": "5098",
+    "track": "Be Mine",
+    "artists": [
+      "Jimin"
+    ],
+    "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
+    "rankChange": 190,
+    "direction": "down",
+    "entryStatus": "RE_ENTRY"
   }
 ]
