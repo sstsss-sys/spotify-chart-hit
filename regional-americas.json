@@ -70,69 +70,69 @@
   {
     "country": "CL",
     "type": "daily",
-    "rank": 29,
+    "rank": 22,
     "previousRank": 29,
     "peakRank": 1,
-    "appearances": 796,
-    "streams": "62158",
+    "appearances": 797,
+    "streams": "62570",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 0,
-    "direction": "=",
-    "entryStatus": "NO_CHANGE"
+    "rankChange": 7,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   },
   {
     "country": "CR",
     "type": "daily",
-    "rank": 44,
-    "previousRank": 46,
+    "rank": 28,
+    "previousRank": 44,
     "peakRank": 1,
-    "appearances": 840,
-    "streams": "14075",
+    "appearances": 841,
+    "streams": "13858",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 2,
+    "rankChange": 16,
     "direction": "up",
     "entryStatus": "MOVED_UP"
   },
   {
     "country": "PY",
     "type": "daily",
-    "rank": 41,
-    "previousRank": 14,
+    "rank": 3,
+    "previousRank": 41,
     "peakRank": 1,
-    "appearances": 785,
-    "streams": "10723",
+    "appearances": 786,
+    "streams": "22230",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 27,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "rankChange": 38,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   },
   {
     "country": "VE",
     "type": "daily",
-    "rank": 7,
-    "previousRank": 3,
+    "rank": 3,
+    "previousRank": 7,
     "peakRank": 1,
-    "appearances": 816,
-    "streams": "18337",
+    "appearances": 817,
+    "streams": "22728",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
     "rankChange": 4,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   }
 ]
