@@ -70,69 +70,69 @@
   {
     "country": "CL",
     "type": "daily",
-    "rank": 30,
-    "previousRank": 18,
+    "rank": 20,
+    "previousRank": 30,
     "peakRank": 1,
-    "appearances": 800,
-    "streams": "58233",
+    "appearances": 801,
+    "streams": "73360",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 12,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "rankChange": 10,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   },
   {
     "country": "CR",
     "type": "daily",
-    "rank": 68,
-    "previousRank": 31,
+    "rank": 37,
+    "previousRank": 68,
     "peakRank": 1,
-    "appearances": 844,
-    "streams": "10335",
+    "appearances": 845,
+    "streams": "13650",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 37,
-    "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "rankChange": 31,
+    "direction": "up",
+    "entryStatus": "MOVED_UP"
   },
   {
-    "country": "PY",
+    "country": "UY",
     "type": "daily",
-    "rank": 49,
-    "previousRank": 16,
-    "peakRank": 1,
-    "appearances": 789,
-    "streams": "7648",
+    "rank": 65,
+    "previousRank": -1,
+    "peakRank": 10,
+    "appearances": 644,
+    "streams": "5530",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 33,
+    "rankChange": 66,
     "direction": "down",
-    "entryStatus": "MOVED_DOWN"
+    "entryStatus": "RE_ENTRY"
   },
   {
     "country": "VE",
     "type": "daily",
     "rank": 4,
-    "previousRank": 7,
+    "previousRank": 4,
     "peakRank": 1,
-    "appearances": 820,
-    "streams": "19172",
+    "appearances": 821,
+    "streams": "22940",
     "track": "Who",
     "artists": [
       "Jimin"
     ],
     "image": "https://i.scdn.co/image/ab67616d00001e02f02c451189a709b9a952aaec",
-    "rankChange": 3,
-    "direction": "up",
-    "entryStatus": "MOVED_UP"
+    "rankChange": 0,
+    "direction": "=",
+    "entryStatus": "NO_CHANGE"
   }
 ]
